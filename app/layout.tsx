@@ -1,4 +1,5 @@
 import { Poppins } from 'next/font/google';
+import { eastmanBold, eastmanExtrabold } from '@/public/assets/fonts';
 import './globals.css';
 import { cookies } from 'next/headers';
 import { createClient } from '@/utils/supabase/server';
@@ -15,10 +16,24 @@ const poppins = Poppins({
   display: 'swap',
 });
 
+const poppinsSemibold = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins-semibold',
+  weight: '600',
+  display: 'swap',
+});
+
 const poppinsBold = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins-bold',
   weight: '700',
+  display: 'swap',
+});
+
+const poppinsExtrabold = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins-extrabold',
+  weight: '800',
   display: 'swap',
 });
 
@@ -39,7 +54,10 @@ export default async function RootLayout({
     data: { user },
   } = await supabase.auth.getUser();
   return (
-    <html lang="en" className={`${poppins.variable} ${poppinsBold.variable}`}>
+    <html
+      lang="en"
+      className={`${poppins.variable} ${poppinsBold.variable} ${poppinsExtrabold.variable} ${poppinsSemibold.variable} ${eastmanBold.variable} ${eastmanExtrabold.variable}`}
+    >
       <body>
         <Navbar user={user} />
         {children}

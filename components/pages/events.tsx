@@ -2,6 +2,7 @@
 import React from 'react';
 import { Table } from '../Table';
 import { ButtonWrapper } from '../Button';
+import { TitleL } from '../Typography';
 
 export const Events = ({ events }: any) => {
   const columns = React.useMemo(
@@ -61,5 +62,10 @@ export const Events = ({ events }: any) => {
     []
   );
 
-  return <Table columns={columns} data={events} />;
+  return (
+    <div className="flex flex-col items-start w-full h-full gap-4">
+      <TitleL>Mis Eventos</TitleL>
+      <Table columns={columns} data={events} />
+    </div>
+  );
 };
