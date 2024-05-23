@@ -1,0 +1,21 @@
+version: "3.9"
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy
+    external: true
+
+services:
+  peloteras-maed:
+    container_name: peloteras-maed
+    image: peloteras/maed:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./.env.production
+    ports:
+      - 3035:3000
+    networks:
+      - nginx-proxy
