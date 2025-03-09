@@ -1,3 +1,4 @@
+import Sidebar from '@/components/organisms/Sidebar';
 import { Events } from '@/components/pages/events';
 import { createClient } from '@/utils/supabase/server';
 import { cookies } from 'next/headers';
@@ -13,7 +14,17 @@ export default async function Home() {
 
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="pl-32 mt-8">
+        <Sidebar
+          navList={[
+            {
+              id: 1,
+              title: 'Home',
+              path: '/',
+              icon: 'assets/icons/Home.svg',
+            },
+          ]}
+        />
         <Events events={eventsData} />
       </main>
     </>
