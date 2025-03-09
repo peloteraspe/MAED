@@ -10,7 +10,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   if (!user) {
     console.error("User not authenticated:", error);
-    redirect("/login"); // Redirect if not logged in
   }
 
   return (
