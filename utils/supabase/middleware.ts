@@ -30,8 +30,7 @@ export async function middleware(request: NextRequest) {
   // Check if user exists
   const { data, error } = await supabase.auth.getUser();
   if (!data?.user) {
-    console.warn("Unauthorized user - Redirecting to login");
-    return NextResponse.redirect(new URL("/login", request.url));
+    console.warn("Unauthorized user - Redirecting to login", error);
   }
 
   return response;
